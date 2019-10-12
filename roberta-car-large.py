@@ -11,6 +11,8 @@ from keras.layers import *
 from keras.models import Model, load_model
 from keras_bert import load_trained_model_from_checkpoint, Tokenizer, get_custom_objects
 
+# roberta_zh_large_model 下载地址 https://roberta.bj.bcebos.com/roeberta_zh_L-24_H-1024_A-16.zip?authorization=bce-auth-v1/64643e3755694c7684824adff1e01abb/2019-10-12T08:04:18Z/-1/host/e87a8ec1b637a5ce804bd096bda5b2891e538c6e5c27932fe8cced60addc273a
+# 复制到浏览器地址栏进行模型下载
 CONFIG_PATH = 'roeberta_zh_L-24_H-1024_A-16/bert_config_large.json'
 CHECKPOINT_PATH = 'roeberta_zh_L-24_H-1024_A-16/roberta_zh_large_model.ckpt'
 DICT_PATH = 'roeberta_zh_L-24_H-1024_A-16/vocab.txt'

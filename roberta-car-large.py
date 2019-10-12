@@ -15,9 +15,10 @@ CONFIG_PATH = 'roeberta_zh_L-24_H-1024_A-16/bert_config_large.json'
 CHECKPOINT_PATH = 'roeberta_zh_L-24_H-1024_A-16/roberta_zh_large_model.ckpt'
 DICT_PATH = 'roeberta_zh_L-24_H-1024_A-16/vocab.txt'
 
+# 一下参数RTX2080ti可以运行
 CONFIG = {
-    'max_len': 16,
-    'batch_size': 8,
+    'max_len': 128,
+    'batch_size': 6,
     'epochs': 32,
     'use_multiprocessing': True,
     'model_dir': os.path.join('model_files/bert'),
@@ -137,15 +138,6 @@ class BertClassify:
         x_in = Lambda(lambda x: x[:, 0])(x_in)
         d = Dropout(0.5)(x_in)
         p = Dense(1, activation='sigmoid')(d)
-
-        # x = Dense(1, activation='softmax')(d)
-
-        # print('Build model...')
-        # model = Sequential()
-        # model.add(Embedding(768, 128))
-        # model.add(LSTM(128, dropout=0.2, recurrent_dropout=0.2))
-        # model.add(Dense(1, activation='sigmoid'))
-        # model.summary()
 
         save = ModelCheckpoint(
             os.path.join(CONFIG['model_dir'], 'bert.h5'),
